@@ -19,7 +19,7 @@
 
 ### Cloud Service Features (Optional)
 - ☁️ **Remote Printer Access**: Access remote printers through Elegoo cloud platform
-
+- ⚠️ Note: Single-Client Login: elegoo-link currently supports only one active WAN client session at a time. Logging in from another client will automatically disconnect the previously connected client.
 ---
 
 ## 💻 System Requirements

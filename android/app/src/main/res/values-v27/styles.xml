@@ -1,0 +1,9 @@
+<resources>
+    <style name="WorkshopLight" parent="WorkshopLightBase">
+        <item name="android:navigationBarColor">#EDF3F4</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+    <style name="WorkshopDark" parent="WorkshopDarkBase">
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+</resources>

@@ -1,0 +1,48 @@
+name: Android validation
+on:
+  push:
+    branches: [android/cc2-foundation]
+    paths: ['android/**', '.github/workflows/android-ci.yml']
+  pull_request:
+    paths: ['android/**', '.github/workflows/android-ci.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Install Android SDK packages
+        run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;35.0.0"'
+      - name: Compile, test, lint and assemble
+        run: ./gradlew --no-daemon --no-build-cache --max-workers=2 testDebugUnitTest lintDebug assembleDebug
+      - name: Report validation totals
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          reports = list(Path('app/build/test-results/testDebugUnitTest').glob('TEST-*.xml'))
+          if reports:
+              totals = {key: sum(int(ET.parse(p).getroot().get(key, '0')) for p in reports) for key in ['tests', 'failures', 'errors', 'skipped']}
+              print('JVM totals:', totals)
+          else:
+              print('No completed JVM reports')
+          lint = Path('app/build/reports/lint-results-debug.xml')
+          if lint.exists():
+              issues = ET.parse(lint).getroot().findall('issue')
+              print('Lint:', {severity: sum(i.get('severity') == severity for i in issues) for severity in ['Error', 'Warning']})
+          else:
+              print('No completed lint report')
+          PY

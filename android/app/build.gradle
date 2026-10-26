@@ -1,0 +1,18 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'io.github.thelastfrogrammer.elink'
+    compileSdk 36
+    defaultConfig {
+        applicationId 'io.github.thelastfrogrammer.elink'
+        minSdk 26
+        targetSdk 36
+        versionCode 10
+        versionName '0.3.5'
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_11; targetCompatibility JavaVersion.VERSION_11 }
+}
+dependencies {
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.json:json:20240303'
+}

@@ -1,0 +1,23 @@
+<resources>
+    <style name="WorkshopLaunch" parent="WorkshopLight" />
+    <style name="WorkshopLightBase" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:colorAccent">#006B65</item>
+        <item name="android:colorBackground">#EDF3F4</item>
+        <item name="android:windowBackground">#EDF3F4</item>
+        <item name="android:navigationBarColor">#142C3B</item>
+        <item name="android:statusBarColor">#EDF3F4</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+    <style name="WorkshopDarkBase" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:colorAccent">#63D5C7</item>
+        <item name="android:colorBackground">#10191D</item>
+        <item name="android:windowBackground">#10191D</item>
+        <item name="android:navigationBarColor">#10191D</item>
+        <item name="android:statusBarColor">#10191D</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+    <style name="WorkshopLight" parent="WorkshopLightBase" />
+    <style name="WorkshopDark" parent="WorkshopDarkBase" />
+</resources>

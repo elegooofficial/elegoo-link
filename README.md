@@ -1,5 +1,7 @@
 # Elegoo Link SDK
 
+This fork also contains **[Link Workshop for Android](android/README.md)**, an independent CC2 LAN development app. See its [feature roadmap](android/ROADMAP.md) and [source audit](android/PROTOCOL.md). The upstream C++ SDK below is retained.
+
 [![Version](https://img.shields.io/badge/version-1.3.6-blue.svg)](https://github.com/elegoo/elegoo-link)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](README.md)
